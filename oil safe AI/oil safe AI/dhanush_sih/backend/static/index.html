@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OIL-SAFE AI — Industrial Safety Intelligence Platform</title>
+  <meta name="description" content="Enterprise AI-Powered Refinery and Oil & Gas Safety Incident Analysis, SIF Precursor Detection, Life-Saving Rules Evaluation, and Explainable Risk Scoring" />
+  <link rel="icon" type="image/png" href="/static/logo.png" />
+  
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            app: {
+              mainBg: '#F8FAFC',
+              surface: '#FFFFFF',
+              surfaceSecondary: '#F1F5F9',
+              border: '#E2E8F0',
+              textPrimary: '#0F172A',
+              textSecondary: '#475569',
+              textMuted: '#94A3B8',
+              primary: '#2563EB',
+              accent: '#06B6D4',
+              critical: '#DC2626',
+              criticalBg: '#FEF2F2',
+              criticalBorder: '#FECACA',
+              high: '#EA580C',
+              medium: '#D97706',
+              low: '#16A34A',
+              info: '#2563EB'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          boxShadow: {
+            subtle: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+            card: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React 18, Babel, Chart.js -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-secondary: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --color-primary: #2563EB;
+      --color-accent: #06B6D4;
+      --color-critical: #DC2626;
+      --color-high: #EA580C;
+      --color-medium: #D97706;
+      --color-low: #16A34A;
+    }
+
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Enterprise Premium White Panels */
+    .command-panel {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    }
+
+    .command-panel-subtle {
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+    }
+
+    .pulse-subtle {
+      animation: pulseSubtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulseSubtle {
+      0%, 100% { border-color: rgba(220, 38, 38, 0.6); box-shadow: 0 0 10px rgba(220, 38, 38, 0.12); }
+      50% { border-color: rgba(220, 38, 38, 0.2); box-shadow: 0 0 3px rgba(220, 38, 38, 0.03); }
+    }
+
+    /* Clean Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+  <div id="root"></div>
+
+  <!-- Application Script -->
+  <script type="text/babel" src="/static/app.jsx"></script>
+</body>
+</html>

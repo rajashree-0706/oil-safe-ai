@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: oilsafe_postgres
+    environment:
+      POSTGRES_DB: oilsafe_db
+      POSTGRES_USER: oilsafe_user
+      POSTGRES_PASSWORD: oilsafe_secure_password_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oilsafe_user -d oilsafe_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: oilsafe_backend
+    environment:
+      - DATABASE_URL=postgresql://oilsafe_user:oilsafe_secure_password_2026@postgres:5432/oilsafe_db
+      - SECRET_KEY=oilsafe_super_secret_jwt_key_2026_refinery_safety_command_center
+      - USE_PGVECTOR=true
+      - ENVIRONMENT=production
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
